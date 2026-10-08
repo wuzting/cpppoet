@@ -1,0 +1,24 @@
+# Doxygen configuration for cpppoet.
+# Generate the API documentation with: doxygen Doxyfile
+# Output is written to build/docs/html (not tracked by git).
+
+PROJECT_NAME           = "cpppoet"
+PROJECT_BRIEF          = "A JavaPoet-style C++ code-generation library"
+PROJECT_NUMBER         = "0.1.0"
+OUTPUT_DIRECTORY       = build/docs
+INPUT                  = include/cpppoet README.md README.en.md
+USE_MDFILE_AS_MAINPAGE = README.md
+RECURSIVE              = YES
+FILE_PATTERNS          = *.h *.md
+EXTRACT_ALL            = YES
+JAVADOC_AUTOBRIEF      = YES
+QT_AUTOBRIEF           = NO
+GENERATE_HTML          = YES
+GENERATE_LATEX         = NO
+GENERATE_TREEVIEW      = YES
+SOURCE_BROWSER         = YES
+INLINE_SOURCES         = NO
+REFERENCED_BY_RELATION = NO
+REFERENCES_RELATION    = NO
+QUIET                  = YES
+WARN_IF_UNDOCUMENTED   = NO
