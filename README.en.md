@@ -239,7 +239,7 @@ cmake/             CMake package config template
 
 ## Documentation
 
-- Online API reference: <https://wuzting.github.io/cpppoet/> (live once GitHub Pages is enabled and the `ENABLE_PAGES` variable is set to `true`)
+- Online API reference: <https://wuzting.github.io/cpppoet/>
 - Roadmap: [ROADMAP.md](ROADMAP.md)
 - Changelog: [CHANGELOG.md](CHANGELOG.md)
 
