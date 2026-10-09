@@ -31,9 +31,6 @@ jobs:
           mkdir -p build
           version=$(git describe --tags --always)
           ( cat Doxyfile; echo "PROJECT_NUMBER = ${version}" ) | doxygen -
-      - uses: actions/configure-pages@v5
-        with:
-          enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: build/docs/html
@@ -41,10 +38,14 @@ jobs:
   deploy:
     name: Deploy to GitHub Pages
     needs: build
+    # Enable Pages in the repository settings and set the ENABLE_PAGES
+    # repository variable to "true" to turn publishing on.
+    if: ${{ vars.ENABLE_PAGES == 'true' }}
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - uses: actions/configure-pages@v5
       - id: deployment
         uses: actions/deploy-pages@v4
