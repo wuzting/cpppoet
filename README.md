@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/wuzting/cpppoet/actions/workflows/ci.yml/badge.svg)](https://github.com/wuzting/cpppoet/actions/workflows/ci.yml)
 [![Coverage](https://github.com/wuzting/cpppoet/actions/workflows/coverage.yml/badge.svg)](https://github.com/wuzting/cpppoet/actions/workflows/coverage.yml)
-[![Docs](https://github.com/wuzting/cpppoet/actions/workflows/docs.yml/badge.svg)](https://wuzting.github.io/cpppoet/)
+[![Docs](https://github.com/wuzting/cpppoet/actions/workflows/docs.yml/badge.svg)](https://github.com/wuzting/cpppoet/actions/workflows/docs.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![C++17](https://img.shields.io/badge/C%2B%2B-17-blue.svg)](#环境要求)
 [![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)](CHANGELOG.md)
