@@ -8,6 +8,7 @@ option(ENABLE_CPPPOET_MODULE "Build the cpppoet code-generation library" ON)
 option(ENABLE_CPPPOET_EXAMPLE "Build the cpppoet examples" OFF)
 option(ENABLE_CPPPOET_TEST "Build the cpppoet tests" OFF)
 option(CPPPOET_WERROR "Treat compiler warnings as errors" OFF)
+option(ENABLE_CPPPOET_DOCS "Generate API documentation with Doxygen" OFF)
 
 # Build a shared library by default. Public symbols are marked with
 # CPPPOET_EXPORT (see include/cpppoet/export.h) and everything else is hidden,
@@ -33,4 +34,17 @@ endif()
 if (ENABLE_CPPPOET_MODULE AND ENABLE_CPPPOET_TEST)
     enable_testing()
     add_subdirectory(tests)
+endif()
+
+if (ENABLE_CPPPOET_DOCS)
+    find_program(DOXYGEN_EXECUTABLE doxygen)
+    if (DOXYGEN_EXECUTABLE)
+        add_custom_target(docs
+            COMMAND ${DOXYGEN_EXECUTABLE} Doxyfile
+            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+            COMMENT "Generating API documentation with Doxygen"
+            VERBATIM)
+    else ()
+        message(WARNING "Doxygen not found; the 'docs' target is unavailable")
+    endif ()
 endif()
