@@ -62,7 +62,11 @@ class CPPPOET_EXPORT CodeBlock {
 public:
     CodeBlock() = default;
 
-    class Builder {
+    /// @brief Fluent builder for a CodeBlock.
+    ///
+    /// Exported explicitly: MSVC does not export the members of a nested class
+    /// just because the enclosing class is dllexport.
+    class CPPPOET_EXPORT Builder {
     public:
         /// @brief Appends a format string with placeholders.
         /// @param format The format string using $L, $N, $S, $T, $$, $> or $<.
