@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use cpppoet in your work, please cite it as below."
+title: "cpppoet"
+abstract: "A JavaPoet-style C++17 code-generation library."
+authors:
+  - name: "wuzting"
+    alias: "wuzting"
+type: software
+license: MIT
+version: 0.1.0
+repository-code: "https://github.com/wuzting/cpppoet"
+keywords:
+  - cpp
+  - code-generation
+  - codegen
+  - java-poet
+  - cmake
