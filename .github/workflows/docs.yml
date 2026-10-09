@@ -28,9 +28,12 @@ jobs:
           sudo apt-get install -y doxygen graphviz
       - name: Generate documentation
         run: |
+          mkdir -p build
           version=$(git describe --tags --always)
           ( cat Doxyfile; echo "PROJECT_NUMBER = ${version}" ) | doxygen -
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: build/docs/html
