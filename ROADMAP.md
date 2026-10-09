@@ -6,6 +6,8 @@ move as priorities change. Contributions toward any of these are welcome — see
 
 ## Near term
 
+- **Restore a green MSVC build.** The Windows job is currently `experimental`
+  in CI; fix the compiler/linker error and make it blocking again.
 - **Fail loudly instead of silently.** Validate `CodeBlock` placeholder/argument
   arity and reject modifiers a spec cannot represent, rather than dropping them.
 - **Centralize modifier emission** into a single table so every `Modifier` is
