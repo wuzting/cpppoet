@@ -1,5 +1,10 @@
 # cpppoet
 
+[![CI](https://github.com/wuzting/cpppoet/actions/workflows/ci.yml/badge.svg)](https://github.com/wuzting/cpppoet/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![C++17](https://img.shields.io/badge/C%2B%2B-17-blue.svg)](#requirements)
+[![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)](CHANGELOG.md)
+
 [简体中文](README.md) | English
 
 cpppoet is a C++17 library for generating C++ source code. Its API is inspired by JavaPoet: describe classes, enums, functions and code blocks with fluent builders, then render them to compilable `.h` / `.cc` files instead of stitching strings together by hand.
@@ -41,6 +46,19 @@ Consume it from another CMake project:
 
 ```cmake
 find_package(cpppoet REQUIRED)
+target_link_libraries(my_generator PRIVATE cpppoet::cpppoet)
+```
+
+Or pull the sources with `FetchContent`:
+
+```cmake
+include(FetchContent)
+FetchContent_Declare(
+    cpppoet
+    GIT_REPOSITORY https://github.com/wuzting/cpppoet.git
+    GIT_TAG        v0.1.0
+)
+FetchContent_MakeAvailable(cpppoet)
 target_link_libraries(my_generator PRIVATE cpppoet::cpppoet)
 ```
 
@@ -199,6 +217,14 @@ examples/          Runnable examples (hello / enum / options)
 tests/             Unit tests and the consumer project
 cmake/             CMake package config template
 ```
+
+## Contributing
+
+Issues and pull requests are welcome. Please read
+[CONTRIBUTING.md](CONTRIBUTING.md) and our
+[Code of Conduct](CODE_OF_CONDUCT.md) first. Report security issues privately
+as described in [SECURITY.md](SECURITY.md) — never in a public issue. See
+[CHANGELOG.md](CHANGELOG.md) for notable changes.
 
 ## License
 

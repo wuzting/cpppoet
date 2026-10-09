@@ -1,5 +1,10 @@
 # cpppoet
 
+[![CI](https://github.com/wuzting/cpppoet/actions/workflows/ci.yml/badge.svg)](https://github.com/wuzting/cpppoet/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![C++17](https://img.shields.io/badge/C%2B%2B-17-blue.svg)](#环境要求)
+[![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)](CHANGELOG.md)
+
 简体中文 | [English](README.en.md)
 
 cpppoet 是一个用 C++17 编写的 C++ 代码生成库，API 设计借鉴 JavaPoet：用流畅（fluent）构建器以结构化方式描述类、枚举、函数与代码块，再渲染为可直接编译的 `.h` / `.cc` 文件，而不是手工拼接字符串。
@@ -41,6 +46,19 @@ cmake --install build --prefix /your/prefix
 
 ```cmake
 find_package(cpppoet REQUIRED)
+target_link_libraries(my_generator PRIVATE cpppoet::cpppoet)
+```
+
+或用 `FetchContent` 直接引入源码：
+
+```cmake
+include(FetchContent)
+FetchContent_Declare(
+    cpppoet
+    GIT_REPOSITORY https://github.com/wuzting/cpppoet.git
+    GIT_TAG        v0.1.0
+)
+FetchContent_MakeAvailable(cpppoet)
 target_link_libraries(my_generator PRIVATE cpppoet::cpppoet)
 ```
 
@@ -199,6 +217,10 @@ examples/          可运行示例（hello / enum / options）
 tests/             单元测试与 consumer 工程
 cmake/             CMake 包配置模板
 ```
+
+## 参与贡献
+
+欢迎提交 issue 与 PR。请先阅读 [CONTRIBUTING.md](CONTRIBUTING.md) 与[行为准则](CODE_OF_CONDUCT.md)；安全问题请按 [SECURITY.md](SECURITY.md) 私下上报，切勿开公开 issue。变更记录见 [CHANGELOG.md](CHANGELOG.md)。
 
 ## 许可证
 
