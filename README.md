@@ -1,6 +1,8 @@
 # cpppoet
 
 [![CI](https://github.com/wuzting/cpppoet/actions/workflows/ci.yml/badge.svg)](https://github.com/wuzting/cpppoet/actions/workflows/ci.yml)
+[![Coverage](https://github.com/wuzting/cpppoet/actions/workflows/coverage.yml/badge.svg)](https://github.com/wuzting/cpppoet/actions/workflows/coverage.yml)
+[![Docs](https://github.com/wuzting/cpppoet/actions/workflows/docs.yml/badge.svg)](https://wuzting.github.io/cpppoet/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![C++17](https://img.shields.io/badge/C%2B%2B-17-blue.svg)](#环境要求)
 [![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)](CHANGELOG.md)
@@ -32,6 +34,14 @@ ctest --test-dir build --output-on-failure
 cmake --install build --prefix /your/prefix
 ```
 
+或使用 [CMake Presets](CMakePresets.json)：
+
+```bash
+cmake --preset dev          # Debug + 测试 + 示例 + Werror
+cmake --build --preset dev
+ctest --preset dev
+```
+
 可配置选项：
 
 | 选项 | 默认 | 说明 |
@@ -61,6 +71,14 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(cpppoet)
 target_link_libraries(my_generator PRIVATE cpppoet::cpppoet)
 ```
+
+也可以用仓库内的 [Conan recipe](conanfile.py) 构建并打包：
+
+```bash
+conan create . --build=missing
+```
+
+运行时可通过 `cpppoet::Version()`（或宏 `CPPPOET_VERSION`）查询版本。
 
 ## 快速开始
 
@@ -216,6 +234,19 @@ src/render/        内部渲染器与 include 收集器
 examples/          可运行示例（hello / enum / options）
 tests/             单元测试与 consumer 工程
 cmake/             CMake 包配置模板
+```
+
+## 文档
+
+- 在线 API 文档：<https://wuzting.github.io/cpppoet/>
+- 路线图：[ROADMAP.md](ROADMAP.md)
+- 变更记录：[CHANGELOG.md](CHANGELOG.md)
+
+本地生成 API 文档（需要 Doxygen）：
+
+```bash
+cmake -S . -B build -DENABLE_CPPPOET_DOCS=ON
+cmake --build build --target docs
 ```
 
 ## 参与贡献

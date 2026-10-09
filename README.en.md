@@ -1,6 +1,8 @@
 # cpppoet
 
 [![CI](https://github.com/wuzting/cpppoet/actions/workflows/ci.yml/badge.svg)](https://github.com/wuzting/cpppoet/actions/workflows/ci.yml)
+[![Coverage](https://github.com/wuzting/cpppoet/actions/workflows/coverage.yml/badge.svg)](https://github.com/wuzting/cpppoet/actions/workflows/coverage.yml)
+[![Docs](https://github.com/wuzting/cpppoet/actions/workflows/docs.yml/badge.svg)](https://wuzting.github.io/cpppoet/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![C++17](https://img.shields.io/badge/C%2B%2B-17-blue.svg)](#requirements)
 [![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)](CHANGELOG.md)
@@ -32,6 +34,14 @@ ctest --test-dir build --output-on-failure
 cmake --install build --prefix /your/prefix
 ```
 
+Or use the [CMake Presets](CMakePresets.json):
+
+```bash
+cmake --preset dev          # Debug + tests + examples + warnings as errors
+cmake --build --preset dev
+ctest --preset dev
+```
+
 Options:
 
 | Option | Default | Description |
@@ -61,6 +71,15 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(cpppoet)
 target_link_libraries(my_generator PRIVATE cpppoet::cpppoet)
 ```
+
+Or build and package with the in-repo [Conan recipe](conanfile.py):
+
+```bash
+conan create . --build=missing
+```
+
+The version is available at run time via `cpppoet::Version()` (or the
+`CPPPOET_VERSION` macro).
 
 ## Quick Start
 
@@ -216,6 +235,19 @@ src/render/        Internal renderer and include collector
 examples/          Runnable examples (hello / enum / options)
 tests/             Unit tests and the consumer project
 cmake/             CMake package config template
+```
+
+## Documentation
+
+- Online API reference: <https://wuzting.github.io/cpppoet/>
+- Roadmap: [ROADMAP.md](ROADMAP.md)
+- Changelog: [CHANGELOG.md](CHANGELOG.md)
+
+Build the API docs locally (requires Doxygen):
+
+```bash
+cmake -S . -B build -DENABLE_CPPPOET_DOCS=ON
+cmake --build build --target docs
 ```
 
 ## Contributing
