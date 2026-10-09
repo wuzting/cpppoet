@@ -20,3 +20,4 @@
 #include "cpppoet/type_name.h"
 #include "cpppoet/types.h"
 #include "cpppoet/variable_spec.h"
+#include "cpppoet/version.h"

@@ -1,0 +1,22 @@
+// Copyright 2026 wuzting
+// SPDX-License-Identifier: MIT
+
+/// @file version.h
+/// @brief Compile-time version information for cpppoet.
+///
+/// This file is generated from version.h.in by CMake. Do not edit it directly.
+
+#pragma once
+
+#define CPPPOET_VERSION_MAJOR @PROJECT_VERSION_MAJOR@
+#define CPPPOET_VERSION_MINOR @PROJECT_VERSION_MINOR@
+#define CPPPOET_VERSION_PATCH @PROJECT_VERSION_PATCH@
+#define CPPPOET_VERSION "@PROJECT_VERSION@"
+
+namespace cpppoet {
+
+/// @brief Returns the library version as a string.
+/// @return The version, for example "0.1.0".
+inline const char* Version() { return CPPPOET_VERSION; }
+
+}  // namespace cpppoet

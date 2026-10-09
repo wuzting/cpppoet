@@ -8,6 +8,7 @@ add_executable(cpppoet_tests
     classes_test.cc
     code_block_test.cc
     file_writer_test.cc
+    version_test.cc
     roundtrip_test.cc
     ${CMAKE_CURRENT_SOURCE_DIR}/../src/code_buffer.cc
     ${CMAKE_CURRENT_SOURCE_DIR}/../src/render/include_collector.cc
