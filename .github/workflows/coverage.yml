@@ -12,6 +12,8 @@ jobs:
   coverage:
     name: gcovr
     runs-on: ubuntu-latest
+    env:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
     steps:
       - uses: actions/checkout@v4
       - name: Configure
@@ -29,7 +31,7 @@ jobs:
       - name: Generate coverage report
         run: |
           python3 -m pip install --user gcovr
-          ~/.local/bin/gcovr -r . \
+          python3 -m gcovr -r . \
             --xml-pretty -o coverage.xml \
             --html-details -o build/coverage.html
       - name: Upload coverage artifact
@@ -40,7 +42,7 @@ jobs:
             coverage.xml
             build/coverage*.html
       - name: Upload to Codecov
-        if: ${{ secrets.CODECOV_TOKEN != '' }}
+        if: ${{ env.CODECOV_TOKEN != '' }}
         uses: codecov/codecov-action@v4
         with:
           files: coverage.xml
