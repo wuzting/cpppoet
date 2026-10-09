@@ -1,0 +1,69 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Linux / GCC
+            os: ubuntu-latest
+            cc: gcc
+            cxx: g++
+          - name: Linux / Clang
+            os: ubuntu-latest
+            cc: clang
+            cxx: clang++
+          - name: macOS / AppleClang
+            os: macos-latest
+            cc: clang
+            cxx: clang++
+          - name: Windows / MSVC
+            os: windows-latest
+            cc: ""
+            cxx: ""
+    env:
+      CC: ${{ matrix.cc }}
+      CXX: ${{ matrix.cxx }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: >
+          cmake -S . -B build
+          -DCMAKE_BUILD_TYPE=Release
+          -DENABLE_CPPPOET_EXAMPLE=ON
+          -DENABLE_CPPPOET_TEST=ON
+      - name: Build
+        run: cmake --build build --config Release --parallel
+      - name: Test
+        working-directory: build
+        run: ctest -C Release --output-on-failure
+
+  format:
+    name: clang-format
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install clang-format
+        run: pip install clang-format==18.1.8
+      - name: Check formatting
+        run: |
+          files=$(git ls-files '*.cc' '*.h')
+          clang-format --dry-run --Werror $files
