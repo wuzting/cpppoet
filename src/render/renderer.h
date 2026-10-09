@@ -10,7 +10,6 @@
 #include <vector>
 
 #include "../code_buffer.h"
-#include "include_collector.h"
 #include "cpppoet/class_spec.h"
 #include "cpppoet/code_block.h"
 #include "cpppoet/data_member_spec.h"
@@ -24,6 +23,7 @@
 #include "cpppoet/type_name.h"
 #include "cpppoet/types.h"
 #include "cpppoet/variable_spec.h"
+#include "include_collector.h"
 
 namespace cpppoet {
 namespace detail {

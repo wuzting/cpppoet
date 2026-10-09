@@ -13,8 +13,8 @@
 #include "render/renderer.h"
 
 namespace cpppoet {
-using std::string;
 using detail::Renderer;
+using std::string;
 
 bool WriteFile(const string& path, const string& content) {
     std::filesystem::path full(path);
