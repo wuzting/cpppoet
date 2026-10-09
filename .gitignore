@@ -68,5 +68,11 @@ vcpkg_installed/
 Testing/
 .cache/
 
+# coverage
+coverage.xml
+*.gcov
+*.gcda
+*.gcno
+
 # Local agent / editor state
 .opencode/
