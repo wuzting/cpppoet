@@ -26,3 +26,11 @@ target_compile_definitions(cpppoet_tests PRIVATE
     CPPPOET_TEST_INCLUDE_DIR="${CMAKE_CURRENT_SOURCE_DIR}/../include")
 
 add_test(NAME cpppoet_tests COMMAND cpppoet_tests)
+
+# On Windows the loader looks for a shared cpppoet next to the executable, so
+# copy the DLL into the test output directory.
+if (WIN32 AND BUILD_SHARED_LIBS)
+    add_custom_command(TARGET cpppoet_tests POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                $<TARGET_FILE:cpppoet> $<TARGET_FILE_DIR:cpppoet_tests>)
+endif ()
