@@ -238,7 +238,7 @@ cmake/             CMake 包配置模板
 
 ## 文档
 
-- 在线 API 文档：<https://wuzting.github.io/cpppoet/>
+- 在线 API 文档：<https://wuzting.github.io/cpppoet/>（需在仓库设置中启用 GitHub Pages 并将变量 `ENABLE_PAGES` 设为 `true` 后生效）
 - 路线图：[ROADMAP.md](ROADMAP.md)
 - 变更记录：[CHANGELOG.md](CHANGELOG.md)
 
